@@ -46,6 +46,10 @@ elapsed time  : 0.0042 sec
 
 program will close in 30 seconds...
 ```
+## future updates
+├── Multiple folders
+├── Moving files to the Recycle Bin to the deletion location
+├── Automatically deleting the Recycle Bin
 
 ## license
 
