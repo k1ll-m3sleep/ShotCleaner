@@ -1,7 +1,8 @@
 from pathlib import Path
 from datetime import datetime, timedelta
 import time
-from colorama import init, Fore, Style
+from colorama import just_fix_windows_console, Fore, Style
+just_fix_windows_console()
 
 # --- settings
 SCREENSHOTS_FOLDER = Path(r"C:\Users\ruh7r\Pictures\Screenshots")
@@ -12,7 +13,6 @@ DELETE_AFTER_DAYS = 7
 def delete_old_screenshots():
     """deletes screenshots older than the specified number of days."""
 
-    init(autoreset=True)
     start_time = time.perf_counter()
 
     checked_files = 0
@@ -20,12 +20,12 @@ def delete_old_screenshots():
     deleted_files = 0
 
     if not SCREENSHOTS_FOLDER.exists():
-        print(f"_folder not found: {SCREENSHOTS_FOLDER}")
+        print(Fore.RED + f"_folder not found: {SCREENSHOTS_FOLDER}{Fore.RESET}")
         return
 
     current_time = datetime.now()
 
-    print(f"\n_folder validation:\n{SCREENSHOTS_FOLDER}\n")
+    print(Fore.GREEN + f"\n_folder validation:\n{SCREENSHOTS_FOLDER}\n{Fore.RESET}")
 
     for file in SCREENSHOTS_FOLDER.iterdir():
 
@@ -45,13 +45,13 @@ def delete_old_screenshots():
                 file.unlink()
 
                 deleted_files += 1
-                print(f"_[remotely] {file.name}")
+                print(Fore.GREEN + f"_[remotely] {file.name}{Fore.RESET}")
 
             except Exception as error:
-                print(Fore.RED + f"_[error] {file.name}: {error}")
+                print(Fore.RED + f"_[error] {file.name}: {error}{Fore.RESET}")
 
         else:
-            print(f"_[not remotely] {file.name}")
+            print(Fore.YELLOW + f"_[not remotely] {file.name}{Fore.RESET}")
 
     end_time = time.perf_counter()
     elapsed = end_time - start_time
@@ -59,15 +59,15 @@ def delete_old_screenshots():
     freed_space_mb = freed_space / (1024 * 1024)
 
     print("\n_==============================")
-    print(f"_checked files : {checked_files}")
-    print(f"_deleted files : {deleted_files}")
-    print(f"_freed space   : {freed_space_mb:.2f} MB")
-    print(f"_elapsed time  : {elapsed:.4f} sec")
+    print(Fore.CYAN + f"_checked files : {checked_files}")
+    print(Fore.RED + f"_deleted files : {deleted_files}")
+    print(Fore.MAGENTA + f"_freed space   : {freed_space_mb:.2f} MB")
+    print(f"_elapsed time  : {elapsed:.4f} sec{Fore.RESET}")
     print("_==============================")
     print()
 
     for i in range(30, 0, -1):
-        print(f"\r_program will close in {i:2d} seconds", end="", flush=True)
+        print(f"\rprogram will close in {Fore.RED}{i:2d}{Fore.RESET} seconds", end="", flush=True)
         time.sleep(1)
 
 if __name__ == "__main__":
