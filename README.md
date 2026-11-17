@@ -1,3 +1,5 @@
+# WARNING
+**I’m not going to work on this project anymore; I had intended to polish it and get it into good shape, but at some point I decided against it and deleted everything I had.**
 # shotCleaner
 
 a lightweight Python utility that automatically removes screenshots older than a specified number of days.
@@ -46,13 +48,13 @@ elapsed time  : 0.0042 sec
 
 program will close in 30 seconds...
 ```
-## future updates
+## ~~future updates~~
 
-├── Multiple folders
+├── ~~Multiple folders~~
 
-├── Moving files to the Recycle Bin to the deletion location
+├── ~~Moving files to the Recycle Bin to the deletion location~~
 
-├── Automatically deleting the Recycle Bin
+├── ~~Automatically deleting the Recycle Bin~~
 
 ## license
 
